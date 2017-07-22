@@ -57,7 +57,7 @@ def plot_loss_histogram(history_object):
     plt.ylabel('mean squared error loss')
     plt.xlabel('epoch')
     plt.legend(['training set', 'validation set'], loc='upper right')
-    plt.savefig('historgram.png')
+    plt.savefig('images/historgram.png')
 #    plt.show()
 
 from keras.models import Sequential, Model
