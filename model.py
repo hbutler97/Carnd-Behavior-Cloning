@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 
 from random import shuffle
-
+#
 def bgr_to_rgb(image):
     b,g,r = cv2.split(image)
     return cv2.merge([r,g,b])
@@ -50,7 +50,7 @@ def load_image_data():
 
     return images, left_images, right_images, measurements
 
-
+#Function used to modify the number of images that are the right left images off center
 def reduce_centered_side_images(reduce_percent, center_images, measurements,steering_angle):
     
     temp_center_images = []
@@ -74,7 +74,7 @@ def reduce_centered_side_images(reduce_percent, center_images, measurements,stee
 
     return temp_center_images, temp_measurements
 
-
+#Function used to modify the number of zero steering angle images
 def reduce_centered_images(reduce_percent, center_images, left_images, right_images, measurements):
     
     temp_center_images = []
