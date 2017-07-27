@@ -3,7 +3,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-
+from sklearn.model_selection import train_test_split
+from sklearn.utils import shuffle
 from random import shuffle
 #
 def bgr_to_rgb(image):
@@ -170,6 +171,7 @@ def plot_loss_histogram(history_object):
     plt.ylabel('mean squared error loss')
     plt.xlabel('epoch')
     plt.legend(['training set', 'validation set'], loc='upper right')
+    plt.show()
     plt.savefig('images/historgram.png')
     
 def plot_measurement_histogram(measurements):  
@@ -177,7 +179,7 @@ def plot_measurement_histogram(measurements):
     plt.title('Steering Angle Historgram')
     plt.ylabel('number of measurements')
     plt.xlabel('angle')
-    #plt.show()
+    plt.show()
     plt.savefig('images/steering_hist.png')
 
 
@@ -207,7 +209,10 @@ def network_model(X_train, y_train, epochs):
     model.add(Dense(10))
     model.add(Dropout(0.5))
     model.add(Dense(1))
-    model.compile(loss='mse', optimizer='adam')
+
+
+    #    model.compile(loss='mse', optimizer='adam',  metrics=['accuracy'])
+    model.compile(loss='mse', optimizer=Adam(lr=0.0001),  metrics=['accuracy'])
     history_object = model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=epochs)
     model.save('model.h5')
     plot_loss_histogram(history_object)
@@ -221,10 +226,21 @@ center_images, left_images, right_images, measurements = augment_data(center_ima
 
 X_train = np.array(center_images)
 y_train = np.array(measurements)
+
+print('Train:', X_train.shape, y_train.shape)
+X_train, X_train_test, y_train, y_train_test = train_test_split(X_train, y_train,test_size=0.05, random_state=42)
+print('Train:', X_train.shape, y_train.shape)
+print('Test:', X_train_test.shape, y_train_test.shape)
+
+
+
 plot_measurement_histogram(y_train)
-model = network_model(X_train, y_train,10)
+model = network_model(X_train, y_train,5)
 
 
+# evaluate the model
+scores = model.evaluate(X_train_test, y_train_test)
+print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 
 

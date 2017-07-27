@@ -67,8 +67,9 @@ Lastly, the images themselves were augmented to assist with overfitting.  The im
 
 ## **Network Augmentation**
 
-The changes above didn't solve the overfitting problem.  So Dropout layers with  a %50 keep probability were added after each Fully Connected Layer.  
-As shown in the image below, the validation loss is now monotonic.  
+The changes above didn't solve the overfitting problem.  So Dropout layers with  a %50 keep probability were added after each Fully Connected Layer. Also the Adam optimizer was modified to have a learn rate of 0.0001.  Lastly the model was trained for 5 Epochs.
+
+The figure below shows the new validation loss.
 
 ![alt text][image8]
 
