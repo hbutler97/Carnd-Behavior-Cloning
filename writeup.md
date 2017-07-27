@@ -38,7 +38,7 @@ The dataset collected consisted of images from 3 camera angles(left, center, rig
 
 ## **Initial Results**
 
-Initial training of the network with original data set yield a loss profile as shown below.
+Initial training of the network with original data set yield a loss profile as shown below.  Adam Optimizer was used.
 
 ![alt text][image2]
 
@@ -68,7 +68,7 @@ Lastly, the images themselves were augmented to assist with overfitting.  The im
 ## **Network Augmentation**
 
 The changes above didn't solve the overfitting problem.  So Dropout layers with  a %50 keep probability were added after each Fully Connected Layer.  
-As shown in the image below, the validation loss is now monotonic.
+As shown in the image below, the validation loss is now monotonic.  
 
 ![alt text][image8]
 
