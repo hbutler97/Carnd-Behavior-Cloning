@@ -21,6 +21,8 @@ This project uses Behavior Cloning to instruct a car on how to steer it's away a
 
 Link to [project code](https://github.com/hbutler97/Carnd-Behavior-Cloning/blob/master/model.py)
 
+Link to [Result YouTube Video](https://youtu.be/caXTWlKYVHk)
+
 ## **Network Architecture**
 
 The base CNN chosen for this project was one published by the Nvidia Autonomous Driving Team.  Architecture is shown below.  As shown below the network consist of 5 convolutional layers along with 3 fully connected layers.   A deeper explanation of the network can be found [here](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/)
@@ -69,6 +71,7 @@ The changes above didn't solve the overfitting problem.  So Dropout layers with 
 As shown in the image below, the validation loss is now monotonic.
 
 ![alt text][image8]
+
 
 ## **Future Areas of Exploration**
 1. Image processing with additional angles
